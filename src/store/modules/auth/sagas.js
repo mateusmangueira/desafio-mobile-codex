@@ -13,7 +13,7 @@ export function* login({payload}) {
       password,
     });
 
-    if (response.error) {
+    if (!response) {
       Alert.alert('Erro no login', 'Houve algum erro interno no servidor');
     }
 
