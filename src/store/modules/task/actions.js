@@ -12,9 +12,10 @@ export function createTaskSuccess(task) {
   };
 }
 
-export function getTasksRequest() {
+export function getTasksRequest(userId) {
   return {
     type: '@task/GET_TASKS_REQUEST',
+    payload: {userId},
   };
 }
 
