@@ -1,9 +1,10 @@
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
-import {createBottomTabNavigator} from 'react-navigation-tabs';
 
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Tasks from './pages/Tasks';
+import Create from './pages/Tasks/Create';
+import Edit from './pages/Tasks/Edit';
 
 export default (signedIn = false) =>
   createAppContainer(
@@ -15,6 +16,8 @@ export default (signedIn = false) =>
         }),
         App: createSwitchNavigator({
           Tasks,
+          Create,
+          Edit,
         }),
       },
       {
