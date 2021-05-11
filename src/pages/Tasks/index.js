@@ -12,8 +12,10 @@ import {
 
 import Background from '../../components/Background';
 import Button from '../../components/Button';
+import Task from '../../components/Task';
+import Loading from '../../components/Loading';
 
-import {Container, Title, List, LoadingTasks} from './styles';
+import {Container, Title, List} from './styles';
 
 const Tasks = ({navigation}) => {
   const dispatch = useDispatch();
@@ -40,21 +42,24 @@ const Tasks = ({navigation}) => {
     <Background>
       <Container>
         <Title>TAREFAS</Title>
-        {loading ? <LoadingTasks>Carregando...</LoadingTasks> : null}
+        {loading ? (
+          <Loading />
+        ) : (
+          <List
+            data={tasks}
+            keyExtractor={item => String(item.id)}
+            renderItem={({item}) => (
+              <Task
+                onCancel={() => handleDelete(item.id)}
+                onEdit={() => navigation.navigate('Edit')}
+                data={item}
+              />
+            )}
+          />
+        )}
         <Button onPress={() => navigation.navigate('Create')} loading={false}>
           Nova Tarefa
         </Button>
-
-        <List
-          data={tasks}
-          keyExtractor={item => String(item.id)}
-          renderItem={({item}) => (
-            <>
-              <Text>{item.name}</Text>
-              <Text>{item.priority}</Text>
-            </>
-          )}
-        />
       </Container>
     </Background>
   );
@@ -67,3 +72,7 @@ Tasks.propTypes = {
 };
 
 export default Tasks;
+
+/*
+
+*/

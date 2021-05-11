@@ -5,6 +5,7 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const Title = styled.Text`
+  margin: auto;
   font-size: 20px;
   color: #fff;
   font-weight: bold;
