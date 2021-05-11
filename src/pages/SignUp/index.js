@@ -1,10 +1,7 @@
 import React, {useRef, useState} from 'react';
 
-import {Image} from 'react-native';
-
 import {useDispatch, useSelector} from 'react-redux';
 
-import logo from '../../assets/signUp.png';
 
 import Background from '../../components/Background';
 import {signUpRequest} from '../../store/modules/auth/actions';
@@ -16,6 +13,7 @@ import {
   SubmitButton,
   SignUpLink,
   SignUpLinkText,
+  Image,
   // eslint-disable-next-line import/no-unresolved
 } from './styles';
 
@@ -38,12 +36,12 @@ const SignUp = ({navigation}) => {
   return (
     <Background>
       <Container>
-        <Image source={logo} />
+        <Image />
         <Form>
           <FormInput
             icon="person-outline"
             autoCorrect={false}
-            placeholder="Digite seu nome"
+            placeholder="Nome"
             returnKeyType="next"
             onSubmitEditing={() => emailRef.current.focus()}
             value={name}
@@ -55,7 +53,7 @@ const SignUp = ({navigation}) => {
             keyboardType="email-address"
             autoCorrect={false}
             autoCapitalize="none"
-            placeholder="Digite um e-mail"
+            placeholder="E-mail"
             ref={emailRef}
             returnKeyType="next"
             onSubmitEditing={() => passwordRef.current.focus()}
@@ -66,7 +64,7 @@ const SignUp = ({navigation}) => {
           <FormInput
             icon="lock-outline"
             secureTextEntry
-            placeholder="Digite uma senha"
+            placeholder="Senha"
             ref={passwordRef}
             returnKeyType="send"
             onSubmitEditing={handleSubmit}
