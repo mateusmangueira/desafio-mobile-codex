@@ -12,7 +12,14 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   flex: 1;
   justify-content: center;
   align-items: center;
+  background-color: #fff;
 `;
+
+export const Image = styled.Image.attrs({ source: require('../../assets/signUp.png') })`
+  max-height: 35%;
+  max-width: 70%;
+  border-radius: 10px;
+`
 
 export const Form = styled.View`
   align-self: stretch;
@@ -21,19 +28,20 @@ export const Form = styled.View`
 `;
 
 export const FormInput = styled(Input)`
-  margin-bottom: 10px;
+  background-color: #ff1065;
+  margin-bottom: 15px;
 `;
 
 export const SubmitButton = styled(Button)`
-  margin-top: 5px;
-`;
-
-export const SignUpLink = styled.TouchableOpacity`
   margin-top: 20px;
 `;
 
+export const SignUpLink = styled.TouchableOpacity`
+  margin-top: -24px;
+`;
+
 export const SignUpLinkText = styled.Text`
-  color: #fff;
+  color: #3F3D56;
   font-weight: bold;
   font-size: 16px;
 `;

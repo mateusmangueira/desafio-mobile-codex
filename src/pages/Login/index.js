@@ -1,10 +1,8 @@
 import React, {useRef, useState} from 'react';
 
-import {Image} from 'react-native';
+import {Text} from 'react-native';
 
 import {useDispatch, useSelector} from 'react-redux';
-
-import logo from '../../assets/login.png';
 
 import Background from '../../components/Background';
 import {LoginRequest} from '../../store/modules/auth/actions';
@@ -16,6 +14,7 @@ import {
   SubmitButton,
   LoginLink,
   LoginLinkText,
+  Image,
 } from './styles';
 
 const Login = ({navigation}) => {
@@ -34,14 +33,14 @@ const Login = ({navigation}) => {
   return (
     <Background>
       <Container>
-        <Image source={logo} />
+        <Image />
         <Form>
           <FormInput
             icon="mail-outline"
             keyboardType="email-address"
             autoCorrect={false}
             autoCapitalize="none"
-            placeholder="Digite seu e-mail"
+            placeholder="E-mail"
             returnKeyType="next"
             onSubmitEditing={() => passwordRef.current.focus()}
             value={email}
@@ -51,7 +50,7 @@ const Login = ({navigation}) => {
           <FormInput
             icon="lock-outline"
             secureTextEntry
-            placeholder="Digite sua senha"
+            placeholder="Senha"
             ref={passwordRef}
             returnKeyType="send"
             onSubmitEditing={handleSubmit}
@@ -60,12 +59,12 @@ const Login = ({navigation}) => {
           />
 
           <SubmitButton loading={loading} onPress={handleSubmit}>
-            Entrar
+            <Text>Entrar</Text>
           </SubmitButton>
         </Form>
 
         <LoginLink onPress={() => navigation.navigate('SignUp')}>
-          <LoginLinkText>Crie sua conta aqui</LoginLinkText>
+          <LoginLinkText>Crie sua conta</LoginLinkText>
         </LoginLink>
       </Container>
     </Background>
