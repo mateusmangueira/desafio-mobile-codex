@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable import/no-cycle */
 import {takeLatest, call, put, all} from 'redux-saga/effects';
 import {Alert} from 'react-native';
@@ -44,15 +45,15 @@ export function* getTasks() {
 
 export function* updateTask({payload}) {
   try {
-    const {name, _id} = payload;
+    const {name, priority} = payload;
 
-    const data = {
+    const task = {
       name,
+      priority,
     };
 
-    const response = yield call(api.put, `/tasks/${_id}`, data);
+    const response = yield call(api.put, `/tasks/${id}`, task);
     Alert.alert('Sucesso!', 'Tarefa editada com sucesso.');
-
     yield put(updateTaskSuccess(response.data.data.task));
   } catch (error) {
     Alert.alert('Ops!', 'Houve algum erro ao atualizar tarefa');

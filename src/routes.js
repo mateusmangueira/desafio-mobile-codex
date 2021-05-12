@@ -1,4 +1,5 @@
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
@@ -14,10 +15,28 @@ export default (signedIn = false) =>
           Login,
           SignUp,
         }),
-        App: createSwitchNavigator({
-          Tasks,
-          Create,
-          Edit,
+        App: createStackNavigator({
+          Tasks: {
+            screen: Tasks,
+            navigationOptions: {
+              headerTitle: false,
+              headerTransparent: true,
+            },
+          },
+          Create: {
+            screen: Create,
+            navigationOptions: {
+              headerTitle: false,
+              headerTransparent: true,
+            },
+          },
+          Edit: {
+            screen: Edit,
+            navigationOptions: {
+              headerTitle: false,
+              headerTransparent: true,
+            },
+          },
         }),
       },
       {

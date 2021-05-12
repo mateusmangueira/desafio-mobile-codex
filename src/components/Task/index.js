@@ -20,7 +20,7 @@ export default function Task({data, onCancel, onEdit}) {
         <TouchableOpacity onPress={onEdit}>
           <Icon name="create" size={20} color="#3F3D56" />
         </TouchableOpacity>
-        
+
         <TouchableOpacity onPress={onCancel}>
           <Icon name="delete" size={20} color="#3F3D56" />
         </TouchableOpacity>

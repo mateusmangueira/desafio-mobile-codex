@@ -1,6 +1,8 @@
 import React, {useRef, useState} from 'react';
+import PropTypes from 'prop-types';
 
 import {useDispatch, useSelector} from 'react-redux';
+
 import {TouchableWithoutFeedback, Keyboard} from 'react-native';
 
 import Background from '../../components/Background';
@@ -34,9 +36,10 @@ const SignUp = ({navigation}) => {
   }
 
   return (
-    <TouchableWithoutFeedback onPress={() => {
-      Keyboard.dismiss();
-    }}>
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+      }}>
       <Background>
         <Container>
           <Image />
@@ -49,7 +52,7 @@ const SignUp = ({navigation}) => {
               onSubmitEditing={() => emailRef.current.focus()}
               value={name}
               onChangeText={setName}
-              />
+            />
 
             <FormInput
               icon="mail-outline"
@@ -62,7 +65,7 @@ const SignUp = ({navigation}) => {
               onSubmitEditing={() => passwordRef.current.focus()}
               value={email}
               onChangeText={setEmail}
-              />
+            />
 
             <FormInput
               icon="lock-outline"
@@ -73,7 +76,7 @@ const SignUp = ({navigation}) => {
               onSubmitEditing={handleSubmit}
               value={password}
               onChangeText={setPassword}
-              />
+            />
 
             <SubmitButton loading={loading} onPress={handleSubmit}>
               Cria conta
@@ -87,6 +90,12 @@ const SignUp = ({navigation}) => {
       </Background>
     </TouchableWithoutFeedback>
   );
+};
+
+SignUp.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default SignUp;
