@@ -45,14 +45,14 @@ export function* getTasks() {
 
 export function* updateTask({payload}) {
   try {
-    const {name, priority} = payload;
+    const {name, priority, _id} = payload;
 
     const task = {
       name,
       priority,
     };
 
-    const response = yield call(api.put, `/tasks/${id}`, task);
+    const response = yield call(api.put, `/tasks/${_id}`, task);
     Alert.alert('Sucesso!', 'Tarefa editada com sucesso.');
     yield put(updateTaskSuccess(response.data.data.task));
   } catch (error) {
