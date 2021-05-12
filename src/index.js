@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import {StatusBar} from 'react-native';
 import {Provider} from 'react-redux';
@@ -10,7 +11,7 @@ export default function Index() {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <StatusBar barStyle="light-content" backgroundColor="##CBCCD1" />
+        <StatusBar barStyle="light-content" backgroundColor="#CBCCD1" />
         <App />
       </PersistGate>
     </Provider>

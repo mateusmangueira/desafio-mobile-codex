@@ -15,6 +15,15 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   align-items: center;
 `;
 
+export const Title = styled.Text`
+  margin: auto;
+  font-size: 20px;
+  color: #ff1065;
+  font-weight: bold;
+  align-self: auto;
+  margin-top: 30px;
+`;
+
 export const Form = styled.View`
   align-self: stretch;
   margin-top: 50px;

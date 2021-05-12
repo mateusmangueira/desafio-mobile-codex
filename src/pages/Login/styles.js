@@ -16,11 +16,13 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   background-color: #fff;
 `;
 
-export const Image = styled.Image.attrs({ source: require('../../assets/login.png') })`
+export const Image = styled.Image.attrs({
+  source: require('../../assets/login.png'),
+})`
   max-height: 40%;
   max-width: 75%;
   border-radius: 10px;
-`
+`;
 
 export const Form = styled.View`
   align-self: stretch;
@@ -36,11 +38,10 @@ export const SubmitButton = styled(Button)`
   margin-top: 20px;
 `;
 
-export const LoginLink = styled.TouchableOpacity`
-`;
+export const LoginLink = styled.TouchableOpacity``;
 
 export const LoginLinkText = styled.Text`
-  color: #3F3D56;
+  color: #3f3d56;
   font-weight: bold;
   font-size: 16px;
 `;

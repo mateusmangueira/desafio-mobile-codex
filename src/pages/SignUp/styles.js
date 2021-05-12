@@ -15,11 +15,13 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   background-color: #fff;
 `;
 
-export const Image = styled.Image.attrs({ source: require('../../assets/signUp.png') })`
+export const Image = styled.Image.attrs({
+  source: require('../../assets/signUp.png'),
+})`
   max-height: 35%;
   max-width: 70%;
   border-radius: 10px;
-`
+`;
 
 export const Form = styled.View`
   align-self: stretch;
@@ -41,7 +43,7 @@ export const SignUpLink = styled.TouchableOpacity`
 `;
 
 export const SignUpLinkText = styled.Text`
-  color: #3F3D56;
+  color: #3f3d56;
   font-weight: bold;
   font-size: 16px;
 `;

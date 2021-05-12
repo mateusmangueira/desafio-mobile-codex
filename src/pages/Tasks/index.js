@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import {Text} from 'react-native';
 
 import {useDispatch, useSelector} from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -15,7 +14,7 @@ import Button from '../../components/Button';
 import Task from '../../components/Task';
 import Loading from '../../components/Loading';
 
-import {Container, Title, List} from './styles';
+import {Container, Title, List, Logout} from './styles';
 
 const Tasks = ({navigation}) => {
   const dispatch = useDispatch();
@@ -32,7 +31,7 @@ const Tasks = ({navigation}) => {
       dispatch(getTasksRequest(userId));
     }
     getTasks();
-  }, []);
+  }, [tasks]);
 
   async function handleDelete(id) {
     dispatch(deleteTaskRequest(id));
@@ -42,21 +41,19 @@ const Tasks = ({navigation}) => {
     <Background>
       <Container>
         <Title>TAREFAS</Title>
-        {loading ? (
-          <Loading />
-        ) : (
-          <List
-            data={tasks}
-            keyExtractor={item => String(item.id)}
-            renderItem={({item}) => (
-              <Task
-                onCancel={() => handleDelete(item.id)}
-                onEdit={() => navigation.navigate('Edit')}
-                data={item}
-              />
-            )}
-          />
-        )}
+
+        <List
+          data={tasks}
+          keyExtractor={item => String(item.id)}
+          renderItem={({item}) => (
+            <Task
+              onCancel={() => handleDelete(item.id)}
+              onEdit={() => navigation.navigate('Edit', item)}
+              data={item}
+            />
+          )}
+        />
+
         <Button onPress={() => navigation.navigate('Create')} loading={false}>
           Nova Tarefa
         </Button>
@@ -72,7 +69,3 @@ Tasks.propTypes = {
 };
 
 export default Tasks;
-
-/*
-
-*/

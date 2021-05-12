@@ -15,6 +15,15 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   align-items: center;
 `;
 
+export const Title = styled.Text`
+  margin: auto;
+  font-size: 20px;
+  color: #ff1065;
+  font-weight: bold;
+  align-self: auto;
+  margin-top: 30px;
+`;
+
 export const Form = styled.View`
   align-self: stretch;
   margin-top: 50px;
@@ -26,9 +35,7 @@ export const FormInput = styled(Input)`
   background-color: #ff1065;
 `;
 
-export const Select = styled.Picker`
-  
-`;
+export const Select = styled.Picker``;
 
 export const CreateIcon = styled(Icon).attrs({name: 'add-task'})`
   font-size: 16px;

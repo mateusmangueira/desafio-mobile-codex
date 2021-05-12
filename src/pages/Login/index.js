@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
+import PropTypes from 'prop-types';
 
 import {Text, TouchableWithoutFeedback, Keyboard} from 'react-native';
-
 import {useDispatch, useSelector} from 'react-redux';
 
 import Background from '../../components/Background';
@@ -29,11 +29,12 @@ const Login = ({navigation}) => {
   function handleSubmit() {
     dispatch(LoginRequest(email, password));
   }
-  
+
   return (
-    <TouchableWithoutFeedback onPress={() => {
-      Keyboard.dismiss();
-    }}>
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+      }}>
       <Background>
         <Container>
           <Image />
@@ -48,7 +49,7 @@ const Login = ({navigation}) => {
               onSubmitEditing={() => passwordRef.current.focus()}
               value={email}
               onChangeText={setEmail}
-              />
+            />
 
             <FormInput
               icon="lock-outline"
@@ -59,7 +60,7 @@ const Login = ({navigation}) => {
               onSubmitEditing={handleSubmit}
               value={password}
               onChangeText={setPassword}
-              />
+            />
 
             <SubmitButton loading={loading} onPress={handleSubmit}>
               <Text>Entrar</Text>
@@ -73,6 +74,12 @@ const Login = ({navigation}) => {
       </Background>
     </TouchableWithoutFeedback>
   );
+};
+
+Login.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default Login;

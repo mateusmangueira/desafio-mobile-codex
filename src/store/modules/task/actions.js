@@ -38,10 +38,10 @@ export function createTaskFailure() {
   };
 }
 
-export function updateTaskRequest(name, _id) {
+export function updateTaskRequest(name, priority, _id) {
   return {
     type: '@task/UPDATE_TASK_REQUEST',
-    payload: {name, _id},
+    payload: {name, priority, _id},
   };
 }
 
