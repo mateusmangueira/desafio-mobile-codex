@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 
-import {Text} from 'react-native';
+import {Text, TouchableWithoutFeedback, Keyboard} from 'react-native';
 
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -29,45 +29,49 @@ const Login = ({navigation}) => {
   function handleSubmit() {
     dispatch(LoginRequest(email, password));
   }
-
+  
   return (
-    <Background>
-      <Container>
-        <Image />
-        <Form>
-          <FormInput
-            icon="mail-outline"
-            keyboardType="email-address"
-            autoCorrect={false}
-            autoCapitalize="none"
-            placeholder="E-mail"
-            returnKeyType="next"
-            onSubmitEditing={() => passwordRef.current.focus()}
-            value={email}
-            onChangeText={setEmail}
-          />
+    <TouchableWithoutFeedback onPress={() => {
+      Keyboard.dismiss();
+    }}>
+      <Background>
+        <Container>
+          <Image />
+          <Form>
+            <FormInput
+              icon="mail-outline"
+              keyboardType="email-address"
+              autoCorrect={false}
+              autoCapitalize="none"
+              placeholder="E-mail"
+              returnKeyType="next"
+              onSubmitEditing={() => passwordRef.current.focus()}
+              value={email}
+              onChangeText={setEmail}
+              />
 
-          <FormInput
-            icon="lock-outline"
-            secureTextEntry
-            placeholder="Senha"
-            ref={passwordRef}
-            returnKeyType="send"
-            onSubmitEditing={handleSubmit}
-            value={password}
-            onChangeText={setPassword}
-          />
+            <FormInput
+              icon="lock-outline"
+              secureTextEntry
+              placeholder="Senha"
+              ref={passwordRef}
+              returnKeyType="send"
+              onSubmitEditing={handleSubmit}
+              value={password}
+              onChangeText={setPassword}
+              />
 
-          <SubmitButton loading={loading} onPress={handleSubmit}>
-            <Text>Entrar</Text>
-          </SubmitButton>
-        </Form>
+            <SubmitButton loading={loading} onPress={handleSubmit}>
+              <Text>Entrar</Text>
+            </SubmitButton>
+          </Form>
 
-        <LoginLink onPress={() => navigation.navigate('SignUp')}>
-          <LoginLinkText>Crie sua conta</LoginLinkText>
-        </LoginLink>
-      </Container>
-    </Background>
+          <LoginLink onPress={() => navigation.navigate('SignUp')}>
+            <LoginLinkText>Crie sua conta</LoginLinkText>
+          </LoginLink>
+        </Container>
+      </Background>
+    </TouchableWithoutFeedback>
   );
 };
 

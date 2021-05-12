@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text} from 'react-native';
+import {Text, TouchableWithoutFeedback, Keyboard} from 'react-native';
 
 // import { Container } from './styles';
 import {
@@ -15,7 +15,10 @@ const Edit = () => {
   const [name, setName] = useState('');
 
   return (
-    <Container>
+    <TouchableWithoutFeedback onPress={() => {
+      Keyboard.dismiss();
+    }}>
+      <Container>
         <Form>
           <FormInput
             autoCorrect={false}
@@ -23,7 +26,7 @@ const Edit = () => {
             returnKeyType="next"
             value={name}
             onChangeText={setName}
-          />
+            />
 
           <SubmitButton /*loading={loading} onPress={handleSubmit}*/>
             <EditIcon />
@@ -31,6 +34,7 @@ const Edit = () => {
           </SubmitButton>
         </Form>
       </Container>
+    </TouchableWithoutFeedback>
   )
 };
 

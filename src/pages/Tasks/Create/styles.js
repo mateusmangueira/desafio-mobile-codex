@@ -26,6 +26,10 @@ export const FormInput = styled(Input)`
   background-color: #ff1065;
 `;
 
+export const Select = styled.Picker`
+  
+`;
+
 export const CreateIcon = styled(Icon).attrs({name: 'add-task'})`
   font-size: 16px;
   color: white;
