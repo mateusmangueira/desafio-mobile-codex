@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
 
-import {Text} from 'react-native'
+import {Text, Picker, TouchableWithoutFeedback, Keyboard} from 'react-native'
+import { color } from 'react-native-reanimated';
 // import { Container } from './styles';
 import {
   Container,
   Form,
   FormInput,
   SubmitButton,
-  CreateIcon
+  CreateIcon,
+  Select
   // eslint-disable-next-line import/no-unresolved
 } from './styles';
 
@@ -16,7 +18,10 @@ const Create = () => {
   const [priority, setPriority] = useState('');
 
   return (
-    <Container>
+    <TouchableWithoutFeedback onPress={() => {
+      Keyboard.dismiss();
+    }}>
+      <Container>
         <Form>
           <FormInput
             autoCorrect={false}
@@ -24,15 +29,12 @@ const Create = () => {
             returnKeyType="next"
             value={name}
             onChangeText={setName}
-          />
+            />
 
-          <FormInput
-            autoCorrect={false}
-            placeholder="Prioridade"
-            returnKeyType="next"
-            value={priority}
-            onChangeText={setPriority}
-          />
+          <Picker placeholder="Prioridade" style={{ marginLeft: 25, color: '#ff1065' }} onValueChange={(priorityValue, priorityIndex) => setPriority(priorityValue)}>
+            <Picker.item label="Alta" value="Alta" />
+            <Picker.item label="Baixa" value="Baixa" />
+          </Picker>
 
           <SubmitButton /*loading={loading} onPress={handleSubmit}*/>
             <CreateIcon />
@@ -40,6 +42,7 @@ const Create = () => {
           </SubmitButton>
         </Form>
       </Container>
+    </TouchableWithoutFeedback>
   );
 };
 
