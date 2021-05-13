@@ -38,16 +38,16 @@ export function createTaskFailure() {
   };
 }
 
-export function updateTaskRequest(name, priority, _id) {
+export function updateTaskRequest(name, priority, id) {
   return {
     type: '@task/UPDATE_TASK_REQUEST',
-    payload: {name, priority, _id},
+    payload: {name, priority, id},
   };
 }
 
 export function updateTaskSuccess(task) {
   return {
-    type: '@task/UPDATE_STUDENT_SUCCESS',
+    type: '@task/UPDATE_TASK_SUCCESS',
     payload: {task},
   };
 }
@@ -58,17 +58,17 @@ export function updateTaskFailure() {
   };
 }
 
-export function deleteTaskRequest(_id) {
+export function deleteTaskRequest(id) {
   return {
     type: '@task/DELETE_TASK_REQUEST',
-    payload: {_id},
+    payload: {id},
   };
 }
 
-export function deleteTaskSuccess(_id) {
+export function deleteTaskSuccess(id) {
   return {
     type: '@task/DELETE_TASK_SUCCESS',
-    payload: {_id},
+    payload: {id},
   };
 }
 

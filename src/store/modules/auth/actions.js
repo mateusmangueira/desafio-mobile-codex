@@ -25,8 +25,8 @@ export function signFailure() {
   };
 }
 
-export function signOut() {
+export function logout() {
   return {
-    type: '@auth/SIGN_OUT',
+    type: '@auth/LOGOUT',
   };
 }
