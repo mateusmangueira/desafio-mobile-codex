@@ -7,23 +7,23 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   getTasksRequest,
   deleteTaskRequest,
+  sortTasks,
 } from '../../store/modules/task/actions';
 
-import Background from '../../components/Background';
-import Button from '../../components/Button';
-import Task from '../../components/Task';
-import Loading from '../../components/Loading';
+import {logout} from '../../store/modules/auth/actions';
 
-import {Container, Title, List, Logout} from './styles';
+import Button from '../../components/Button';
+import ButtonLogout from '../../components/ButtonLogout';
+import Task from '../../components/Task';
+
+import {Container, Title, List} from './styles';
 
 const Tasks = ({navigation}) => {
   const dispatch = useDispatch();
 
   const loading = useSelector(state => state.auth.loading);
 
-  const [tasks, setTasks] = useState(
-    useSelector(state => state.task.tasks) || [],
-  );
+  const [tasks, setTasks] = useState(useSelector(state => state.task.tasks));
 
   useEffect(() => {
     async function getTasks() {
@@ -31,34 +31,45 @@ const Tasks = ({navigation}) => {
       dispatch(getTasksRequest(userId));
     }
     getTasks();
-  }, [tasks]);
+  }, []);
 
   async function handleDelete(id) {
     dispatch(deleteTaskRequest(id));
   }
 
+  async function handleLogout() {
+    dispatch(logout());
+  }
+
+  async function handleSort() {
+    dispatch(sortTasks());
+  }
+
   return (
-    <Background>
-      <Container>
+    <Container>
+      <Button onPress={() => handleSort()}>
         <Title>TAREFAS</Title>
+      </Button>
 
-        <List
-          data={tasks}
-          keyExtractor={item => String(item.id)}
-          renderItem={({item}) => (
-            <Task
-              onCancel={() => handleDelete(item.id)}
-              onEdit={() => navigation.navigate('Edit', item)}
-              data={item}
-            />
-          )}
-        />
+      <List
+        data={tasks}
+        keyExtractor={item => String(item.id)}
+        renderItem={({item}) => (
+          <Task
+            onCancel={() => handleDelete(item.id)}
+            onEdit={() => navigation.navigate('Edit')}
+            data={item}
+          />
+        )}
+      />
 
-        <Button onPress={() => navigation.navigate('Create')} loading={false}>
-          Nova Tarefa
-        </Button>
-      </Container>
-    </Background>
+      <Button onPress={() => navigation.navigate('Create')} loading={loading}>
+        Nova Tarefa
+      </Button>
+      <ButtonLogout onPress={() => handleLogout()} loading={loading}>
+        Deslogar
+      </ButtonLogout>
+    </Container>
   );
 };
 

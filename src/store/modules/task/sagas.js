@@ -45,15 +45,17 @@ export function* getTasks() {
 
 export function* updateTask({payload}) {
   try {
-    const {name, priority, _id} = payload;
+    const {name, priority, id} = payload;
 
     const task = {
       name,
       priority,
     };
 
-    const response = yield call(api.put, `/tasks/${_id}`, task);
+    const response = yield call(api.put, `/tasks/${id}`, task);
+
     Alert.alert('Sucesso!', 'Tarefa editada com sucesso.');
+
     yield put(updateTaskSuccess(response.data.data.task));
   } catch (error) {
     Alert.alert('Ops!', 'Houve algum erro ao atualizar tarefa');
@@ -63,8 +65,8 @@ export function* updateTask({payload}) {
 
 export function* deleteTask({payload}) {
   try {
-    const {_id} = payload;
-    const response = yield call(api.delete, `/tasks/${_id}`);
+    const {id} = payload;
+    const response = yield call(api.delete, `/tasks/${id}`);
 
     if (response) {
       Alert.alert('Sucesso!', 'Tarefa deletada com sucesso.');

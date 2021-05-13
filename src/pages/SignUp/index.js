@@ -5,7 +5,6 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {TouchableWithoutFeedback, Keyboard} from 'react-native';
 
-import Background from '../../components/Background';
 import {signUpRequest} from '../../store/modules/auth/actions';
 
 import {
@@ -40,54 +39,52 @@ const SignUp = ({navigation}) => {
       onPress={() => {
         Keyboard.dismiss();
       }}>
-      <Background>
-        <Container>
-          <Image />
-          <Form>
-            <FormInput
-              icon="person-outline"
-              autoCorrect={false}
-              placeholder="Nome"
-              returnKeyType="next"
-              onSubmitEditing={() => emailRef.current.focus()}
-              value={name}
-              onChangeText={setName}
-            />
+      <Container>
+        <Image />
+        <Form>
+          <FormInput
+            icon="person-outline"
+            autoCorrect={false}
+            placeholder="Nome"
+            returnKeyType="next"
+            onSubmitEditing={() => emailRef.current.focus()}
+            value={name}
+            onChangeText={setName}
+          />
 
-            <FormInput
-              icon="mail-outline"
-              keyboardType="email-address"
-              autoCorrect={false}
-              autoCapitalize="none"
-              placeholder="E-mail"
-              ref={emailRef}
-              returnKeyType="next"
-              onSubmitEditing={() => passwordRef.current.focus()}
-              value={email}
-              onChangeText={setEmail}
-            />
+          <FormInput
+            icon="mail-outline"
+            keyboardType="email-address"
+            autoCorrect={false}
+            autoCapitalize="none"
+            placeholder="E-mail"
+            ref={emailRef}
+            returnKeyType="next"
+            onSubmitEditing={() => passwordRef.current.focus()}
+            value={email}
+            onChangeText={setEmail}
+          />
 
-            <FormInput
-              icon="lock-outline"
-              secureTextEntry
-              placeholder="Senha"
-              ref={passwordRef}
-              returnKeyType="send"
-              onSubmitEditing={handleSubmit}
-              value={password}
-              onChangeText={setPassword}
-            />
+          <FormInput
+            icon="lock-outline"
+            secureTextEntry
+            placeholder="Senha"
+            ref={passwordRef}
+            returnKeyType="send"
+            onSubmitEditing={handleSubmit}
+            value={password}
+            onChangeText={setPassword}
+          />
 
-            <SubmitButton loading={loading} onPress={handleSubmit}>
-              Cria conta
-            </SubmitButton>
-          </Form>
+          <SubmitButton loading={loading} onPress={handleSubmit}>
+            Cria conta
+          </SubmitButton>
+        </Form>
 
-          <SignUpLink onPress={() => navigation.navigate('Login')}>
-            <SignUpLinkText>Já possui conta?</SignUpLinkText>
-          </SignUpLink>
-        </Container>
-      </Background>
+        <SignUpLink onPress={() => navigation.navigate('Login')}>
+          <SignUpLinkText>Já possui conta?</SignUpLinkText>
+        </SignUpLink>
+      </Container>
     </TouchableWithoutFeedback>
   );
 };

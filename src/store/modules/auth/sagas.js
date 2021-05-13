@@ -53,7 +53,7 @@ export function setToken({payload}) {
   }
 }
 
-export function signOut() {
+export function logout() {
   Alert.alert('Deslogado com sucesso!');
 }
 
@@ -61,5 +61,5 @@ export default all([
   takeLatest('persist/REHYDRATE', setToken),
   takeLatest('@auth/LOGIN_REQUEST', login),
   takeLatest('@auth/SIGN_UP_REQUEST', signUp),
-  takeLatest('@auth/SIGN_OUT', signOut),
+  takeLatest('@auth/LOGOUT', logout),
 ]);
