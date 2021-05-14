@@ -16,7 +16,7 @@ import Button from '../../components/Button';
 import ButtonLogout from '../../components/ButtonLogout';
 import Task from '../../components/Task';
 
-import {Container, Title, List} from './styles';
+import {Container, Title, List, Touchable, ContainerTitle, LogOutIcon, SortIcon} from './styles';
 
 const Tasks = ({navigation}) => {
   const dispatch = useDispatch();
@@ -47,9 +47,15 @@ const Tasks = ({navigation}) => {
 
   return (
     <Container>
-      <Button onPress={() => handleSort()}>
+      <ButtonLogout onPress={() => handleLogout()} loading={loading}>
+        <LogOutIcon></LogOutIcon>
+      </ButtonLogout>
+      <ContainerTitle>
         <Title>TAREFAS</Title>
-      </Button>
+        <Touchable onPress={() => handleSort()}>
+          <SortIcon></SortIcon>
+        </Touchable>
+      </ContainerTitle>
 
       <List
         data={tasks}
@@ -66,9 +72,6 @@ const Tasks = ({navigation}) => {
       <Button onPress={() => navigation.navigate('Create')} loading={loading}>
         Nova Tarefa
       </Button>
-      <ButtonLogout onPress={() => handleLogout()} loading={loading}>
-        Deslogar
-      </ButtonLogout>
     </Container>
   );
 };
