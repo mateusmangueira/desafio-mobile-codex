@@ -6,15 +6,16 @@ export const Container = styled.SafeAreaView`
   background-color: #fff;
 `;
 
+export const Text = styled.Text``;
+
 export const ContainerTitle = styled.View`
-  margin-top: 10px; 
+  margin-top: 10px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 `;
 
-export const Touchable = styled.TouchableOpacity`
-`;
+export const Touchable = styled.TouchableOpacity``;
 
 export const SortIcon = styled(Icon).attrs({name: 'sort'})`
   font-size: 30px;
