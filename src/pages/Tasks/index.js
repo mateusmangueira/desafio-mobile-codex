@@ -16,14 +16,22 @@ import Button from '../../components/Button';
 import ButtonLogout from '../../components/ButtonLogout';
 import Task from '../../components/Task';
 
-import {Container, Title, List, Touchable, ContainerTitle, LogOutIcon, SortIcon} from './styles';
+import {
+  Container,
+  Title,
+  List,
+  Touchable,
+  ContainerTitle,
+  LogOutIcon,
+  SortIcon,
+} from './styles';
 
 const Tasks = ({navigation}) => {
   const dispatch = useDispatch();
 
   const loading = useSelector(state => state.auth.loading);
 
-  const [tasks, setTasks] = useState(useSelector(state => state.task.tasks));
+  const tasks = useSelector(state => state.task.tasks);
 
   useEffect(() => {
     async function getTasks() {
@@ -31,7 +39,7 @@ const Tasks = ({navigation}) => {
       dispatch(getTasksRequest(userId));
     }
     getTasks();
-  }, []);
+  }, [tasks]);
 
   async function handleDelete(id) {
     dispatch(deleteTaskRequest(id));
@@ -48,12 +56,12 @@ const Tasks = ({navigation}) => {
   return (
     <Container>
       <ButtonLogout onPress={() => handleLogout()} loading={loading}>
-        <LogOutIcon></LogOutIcon>
+        <LogOutIcon />
       </ButtonLogout>
       <ContainerTitle>
         <Title>TAREFAS</Title>
         <Touchable onPress={() => handleSort()}>
-          <SortIcon></SortIcon>
+          <SortIcon />
         </Touchable>
       </ContainerTitle>
 
@@ -63,7 +71,7 @@ const Tasks = ({navigation}) => {
         renderItem={({item}) => (
           <Task
             onCancel={() => handleDelete(item.id)}
-            onEdit={() => navigation.navigate('Edit')}
+            onEdit={() => navigation.navigate('Edit', {id: item.id})}
             data={item}
           />
         )}

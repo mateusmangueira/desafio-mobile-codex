@@ -32,6 +32,7 @@ const SignUp = ({navigation}) => {
 
   function handleSubmit() {
     dispatch(signUpRequest(name, email, password));
+    navigation.navigate('Login');
   }
 
   return (
@@ -76,7 +77,7 @@ const SignUp = ({navigation}) => {
             onChangeText={setPassword}
           />
 
-          <SubmitButton loading={loading} onPress={handleSubmit}>
+          <SubmitButton loading={loading} onPress={() => handleSubmit()}>
             Cria conta
           </SubmitButton>
         </Form>

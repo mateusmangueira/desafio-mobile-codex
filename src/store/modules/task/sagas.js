@@ -45,11 +45,10 @@ export function* getTasks() {
 
 export function* updateTask({payload}) {
   try {
-    const {name, priority, id} = payload;
+    const {name, id} = payload;
 
     const task = {
       name,
-      priority,
     };
 
     const response = yield call(api.put, `/tasks/${id}`, task);
