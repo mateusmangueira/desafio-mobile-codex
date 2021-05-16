@@ -25,7 +25,7 @@ export const Image = styled.Image.attrs({
 
 export const Form = styled.View`
   align-self: stretch;
-  margin-top: 50px;
+  margin-top: 20px;
   padding: 25px;
 `;
 

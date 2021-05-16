@@ -26,7 +26,7 @@ const Create = ({navigation}) => {
   const loading = useSelector(state => state.auth.loading);
 
   const [name, setName] = useState('');
-  const [priority, setPriority] = useState('');
+  const [priority, setPriority] = useState('Baixa');
 
   async function handleCreateTask() {
     dispatch(createTaskRequest(name, priority));
@@ -51,13 +51,12 @@ const Create = ({navigation}) => {
 
           <Picker
             style={{marginLeft: 25, color: '#ff1065'}}
-            onTouchCancel
             selectedValue={priority}
             onValueChange={(priorityValue, priorityIndex) =>
               setPriority(priorityValue)
             }>
-            <Picker.item label="Alta" value="Alta" />
             <Picker.item label="Baixa" value="Baixa" />
+            <Picker.item label="Alta" value="Alta" />
           </Picker>
 
           <SubmitButton loading={loading} onPress={() => handleCreateTask()}>

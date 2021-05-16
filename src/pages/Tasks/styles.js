@@ -6,7 +6,14 @@ export const Container = styled.SafeAreaView`
   background-color: #fff;
 `;
 
-export const Text = styled.Text``;
+export const EmptyList = styled.Text`
+  margin-top: 50px;
+  font-size: 16px;
+  font-style: italic;
+  flex: 1;
+  align-self: center;
+  justify-content: center;
+`;
 
 export const ContainerTitle = styled.View`
   margin-top: 10px;

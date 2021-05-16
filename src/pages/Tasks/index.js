@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 
 import {useDispatch, useSelector} from 'react-redux';
@@ -19,6 +19,7 @@ import Task from '../../components/Task';
 import {
   Container,
   Title,
+  EmptyList,
   List,
   Touchable,
   ContainerTitle,
@@ -49,9 +50,7 @@ const Tasks = ({navigation}) => {
     dispatch(logout());
   }
 
-  async function handleSort() {
-    dispatch(sortTasks());
-  }
+  async function handleSort() {}
 
   return (
     <Container>
@@ -65,17 +64,21 @@ const Tasks = ({navigation}) => {
         </Touchable>
       </ContainerTitle>
 
-      <List
-        data={tasks}
-        keyExtractor={item => String(item.id)}
-        renderItem={({item}) => (
-          <Task
-            onCancel={() => handleDelete(item.id)}
-            onEdit={() => navigation.navigate('Edit', {id: item.id})}
-            data={item}
-          />
-        )}
-      />
+      {tasks.length ? (
+        <List
+          data={tasks}
+          keyExtractor={item => String(item.id)}
+          renderItem={({item}) => (
+            <Task
+              onCancel={() => handleDelete(item.id)}
+              onEdit={() => navigation.navigate('Edit', {id: item.id})}
+              data={item}
+            />
+          )}
+        />
+      ) : (
+        <EmptyList>Você não possui Tarefas!</EmptyList>
+      )}
 
       <Button onPress={() => navigation.navigate('Create')} loading={loading}>
         Nova Tarefa
