@@ -16,7 +16,7 @@ export const Container = styled.KeyboardAvoidingView.attrs({
 `;
 
 export const Title = styled.Text`
-  margin: auto;
+  justify-content: center;
   font-size: 20px;
   color: #ff1065;
   font-weight: bold;
@@ -25,6 +25,7 @@ export const Title = styled.Text`
 `;
 
 export const Form = styled.View`
+  justify-content: center;
   align-self: stretch;
   margin-top: 50px;
   padding: 25px;
@@ -44,5 +45,5 @@ export const CreateIcon = styled(Icon).attrs({name: 'add-task'})`
 `;
 
 export const SubmitButton = styled(Button)`
-  margin-top: 50px;
+  margin-top: 90px;
 `;

@@ -16,7 +16,7 @@ export const Container = styled.KeyboardAvoidingView.attrs({
 `;
 
 export const Title = styled.Text`
-  margin: auto;
+  justify-content: center;
   font-size: 20px;
   color: #ff1065;
   font-weight: bold;
